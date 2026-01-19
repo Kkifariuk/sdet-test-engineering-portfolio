@@ -1,18 +1,48 @@
-## Playwright UI Automation (JavaScript)
+## Selenium Java Starter Framework
 
-This module demonstrates modern, fast UI automation using Playwright with JavaScript.
+This module demonstrates an enterprise-style Selenium framework using Java and TestNG.
 
-### What this covers
-- Reliable selectors using data-testid
-- Parallel test execution
-- Network interception to reduce UI dependency
-- Screenshot and trace capture on failure
+### Features
+- Page Object Model
+- Configurable browser and base URL
+- Implicit waits and driver management
+- Sample Login test
+- Maven + TestNG setup for CI
 
-### Design principles
-- Prefer API setup over UI setup where possible
-- Avoid retries masking real issues
-- Optimize for CI speed and determinism
+### How to run
+1. Install Maven
+2. Update `config.properties` if needed
+3. Run tests:
+```bash
+mvn clean test
 
-This framework represents how I would test a modern frontend application
-where speed, stability, and signal quality matter.
+### How This Framework Works
+1. `BaseTest` handles browser lifecycle.
+2. `LoginPage` encapsulates UI interactions for login.
+3. `LoginTest` demonstrates a real negative login scenario with assertions.
+4. Fully structured to allow easy extension for more pages and tests.
+
+           ┌────────────┐
+           │ BaseTest   │
+           │ (setup/    │
+           │ teardown)  │
+           └─────┬─────-┘
+                 │
+         initializes driver
+                 │
+                 ▼
+           ┌────────────┐
+           │ LoginTest  │
+           │ (test case)│
+           └─────┬─────-┘
+                 │
+         uses Page Object
+                 │
+                 ▼
+           ┌────────────┐
+           │ LoginPage  │
+           │ (UI actions│
+           │ & locators)│
+           └────────────┘
+
 
